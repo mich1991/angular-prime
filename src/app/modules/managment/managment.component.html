@@ -1,0 +1,37 @@
+<div class="card">
+  <!-- Needed for toast & dialog displaying -->
+  <p-toast></p-toast>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+  <!--  -->
+
+  <p-tabMenu
+    [model]="items"
+    [(activeItem)]="currentTab"
+    (activeItemChange)="tabChangeHandler($event)"
+  >
+  </p-tabMenu>
+  <ng-container *ngIf="currentTab.label === 'Home'">
+    <mng-table
+      [isLoading]="isLoading"
+      [tableColumns]="userColumns"
+      [tableData]="userTable"
+    ></mng-table>
+  </ng-container>
+
+  <ng-container *ngIf="currentTab.label === 'Calendar'">
+    <mng-table
+      [isLoading]="isLoading"
+      [tableColumns]="productColumns"
+      [tableData]="productTable"
+    ></mng-table>
+  </ng-container>
+
+  <ng-container *ngIf="currentTab.label === 'Edit'">
+    <mng-table
+      [isLoading]="isLoading"
+      [tableColumns]="orderColumns"
+      [tableData]="orderTable"
+    ></mng-table>
+  </ng-container>
+  <p-button (onClick)="modalTest()">Trigger modal</p-button>
+</div>
