@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Table, tableColumn } from '../models/table';
+import { Table, tableColumn } from '../../managment/models/table';
 
 @Component({
   selector: 'mng-table',

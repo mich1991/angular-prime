@@ -3,22 +3,25 @@ import { CommonModule } from '@angular/common';
 
 import { ManagmentRoutingModule } from './managment-routing.module';
 import { TabMenuModule } from 'primeng/tabmenu';
-import { TableModule } from 'primeng/table';
 import { ManagmentComponent } from './managment.component';
-import { TableComponent } from './table/table.component';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
+import { HcpcsAdminComponent } from './hcpcs-admin/hcpcs-admin.component';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [ManagmentComponent, TableComponent],
+  declarations: [ManagmentComponent, HcpcsAdminComponent],
   imports: [
     CommonModule,
     ManagmentRoutingModule,
     TabMenuModule,
-    TableModule,
     ButtonModule,
     ConfirmDialogModule,
+    ToastModule,
+    DynamicDialogModule,
+    SharedModule,
     ToastModule,
   ],
 })

@@ -11,11 +11,7 @@
   >
   </p-tabMenu>
   <ng-container *ngIf="currentTab.label === 'Home'">
-    <mng-table
-      [isLoading]="isLoading"
-      [tableColumns]="userColumns"
-      [tableData]="userTable"
-    ></mng-table>
+    <app-hcpcs-admin></app-hcpcs-admin>
   </ng-container>
 
   <ng-container *ngIf="currentTab.label === 'Calendar'">

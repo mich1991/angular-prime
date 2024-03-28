@@ -5,8 +5,6 @@ import {
   orderData,
   productColumnsData,
   productData,
-  userColumnsData,
-  userData,
 } from '../mocks/tableData';
 import { Table, tableColumn } from './models/table';
 import {
@@ -29,8 +27,7 @@ export interface ITableIdentifier {
 export class ManagmentComponent implements OnInit {
   isLoading: boolean = false;
   currentTab: MenuItem = { label: 'Home', icon: 'pi pi-fw pi-home' };
-  userTable: Table = userData;
-  userColumns: tableColumn[] = [];
+
   productTable: Table = [];
   productColumns: tableColumn[] = [];
   orderTable: Table = [];
@@ -55,19 +52,14 @@ export class ManagmentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userColumns = userColumnsData;
     this.productColumns = productColumnsData;
     this.orderColumns = orderColumnsData;
-    this.getTableData('user');
   }
 
   tabChangeHandler(event: any) {
     this.currentTab = event;
-    let table: 'user' | 'product' | 'order' = 'user';
+    let table: 'product' | 'order' = 'product';
     switch (event.label) {
-      case 'Home':
-        table = 'user';
-        break;
       case 'Calendar':
         table = 'product';
         break;
@@ -78,11 +70,7 @@ export class ManagmentComponent implements OnInit {
     this.getTableData(table);
   }
 
-  getTableData(tableType: 'user' | 'product' | 'order') {
-    // that's ugly as hell, but it's just for the example, don't do this in production
-    if (tableType === 'user' && this.userTable.length > 0) {
-      return;
-    }
+  getTableData(tableType: 'product' | 'order') {
     if (tableType === 'product' && this.productTable.length > 0) {
       return;
     }
@@ -92,9 +80,6 @@ export class ManagmentComponent implements OnInit {
     this.isLoading = true;
     setTimeout(() => {
       switch (tableType) {
-        case 'user':
-          this.userTable = userData;
-          break;
         case 'product':
           this.productTable = productData;
           break;

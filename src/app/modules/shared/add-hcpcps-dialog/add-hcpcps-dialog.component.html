@@ -1,0 +1,31 @@
+<p>add-hcpcps-dialog works!</p>
+<p>{{ config.data.name }}</p>
+
+<form *ngIf="hcpcsForm" [formGroup]="hcpcsForm" (ngSubmit)="submit()">
+  <div class="flex flex-column gap-3">
+    <input
+      type="text"
+      pInputText
+      formControlName="name"
+      placeholder="name"
+      [ngClass]="{
+        'ng-invalid': hcpcsForm.get('name')?.invalid,
+        'ng-dirty': hcpcsForm.get('name')?.dirty
+      }"
+    />
+    <input type="text" pInputText formControlName="code" placeholder="code" />
+    <input
+      type="text"
+      pInputText
+      formControlName="description"
+      placeholder="description"
+    />
+  </div>
+
+  <div class="flex justify-content-between mt-3">
+    <p-button (click)="close()">Close</p-button>
+    <p-button type="submit" [disabled]="!hcpcsForm.valid"
+      >Add HCPCS Code</p-button
+    >
+  </div>
+</form>
